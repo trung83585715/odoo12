@@ -1,0 +1,136 @@
+#!/bin/bash
+
+cd ~/Documents
+mkdir odoo
+cd odoo 
+
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install_mac/master/install_mac)"
+brew update
+brew upgrade
+git clone https://github.com/trung83585715/tools.git
+
+brew install postgresql
+ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+alias pg_start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+alias pg_stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+pg_start
+createuser -s postgres
+createuser -s odoo pwprompt=odoo --createdb
+
+brew install python@2
+pip install virtualenv
+virtualenv env
+source env/bin/activate
+pip install -r ./tools/requirements.txt
+brew install gcc
+pip install Pillow
+pip install lxml
+pip install greenlet
+pip install gevent
+pip install psycopg2
+pip install python-ldap
+
+brew install node
+npm install -g less
+
+echo "PLEASE ENTER YOUR EMAIL FOR GIT SETUP"
+read email
+git config --global user.email $email
+
+git clone https://gitlab.kiuglobal.com/kiuglobal-com/kiuerp/base.git
+cd base
+git checkout dev
+cd ../
+
+git clone https://gitlab.kiuglobal.com/kiuglobal-com/kiuerp/kiuaddons2.git
+cd kiuaddons2
+git checkout dev
+cd ../
+
+git clone https://gitlab.kiuglobal.com/kiuglobal-com/kiuerp/kiuaddons.git
+cd kiuaddons
+git checkout dev
+cd ../
+
+git clone https://gitlab.kiuglobal.com/kiuglobal-com/kiuerp/enterprise.git
+cd enterprise
+git checkout dev
+cd ../
+
+git clone https://gitlab.kiuglobal.com/kiuglobal-com/kiuerp/tvtmaaddons.git
+cd tvtmaaddons
+git checkout 10.0
+cd ../
+
+git clone https://github.com/OCA/e-commerce.git
+cd e-commece
+git checkout 10.0
+cd ../
+
+git clone https://github.com/it-projects-llc/mail-addons.git
+cd mail-addons
+git checkout 10.0
+cd ../
+
+git clone https://github.com/it-projects-llc/misc-addons.git
+cd misc-addons
+git checkout 10.0
+cd ../
+
+git clone https://github.com/muk-it/muk_web.git
+cd muk_web
+git checkout 10.0
+cd ../
+
+git clone https://github.com/codup/odoo-eam.git
+cd odor-eam
+git checkout 10.0
+cd ../
+
+git clone https://github.com/OCA/partner-contact.git
+cd partner-contact
+git checkout 10.0
+cd ../
+
+
+git clone https://github.com/it-projects-llc/pos-addons.git
+cd pos-addons
+git checkout 10.0
+cd ../
+
+git clone https://github.com/OCA/sale-workflow.git
+cd sale-workflow
+git checkout 10.0
+cd ../
+
+
+git clone https://github.com/it-projects-llc/website-addons.git
+cd website-addons
+git checkout 10.0
+cd ../
+
+
+git clone https://github.com/OCA/account-payment.git
+cd account-payment
+git checkout 10.0
+cd ../
+
+git clone https://github.com/it-projects-llc/odoo-saas-tools.git
+cd odoo-saas-tools
+git checkout 10.0
+cd../
+
+bash ./tools/push_to_bin
+restore veritas odoo1
+fix_web_debranding odoo1
+
+cp ~/Documents/odoo/tools/run_odoo ~/Desktop/
+cp ~/Documents/odoo/tools/update_odoo ~/Desktop/
+
+
+
+
+
+
+
+

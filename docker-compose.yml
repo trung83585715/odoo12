@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  db:
+    image: postgres:10
+    environment:
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - POSTGRES_DB=postgres
+    restart: always
+
+  web:
+    build: .
+    volumes:
+      - .:/opt/odoo/12
+    working_dir: /opt/odoo/12
+    command: python odoo-bin --config=./odoo.conf
+    ports:
+      - "8069:8069"
+    depends_on:
+      - db
+    restart: always
