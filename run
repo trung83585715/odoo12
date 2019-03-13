@@ -1,3 +1,4 @@
 #!/bin/bash
 
+export POSTGRES_DB=postgres
 ./env/bin/python3 odoo-bin --config=./odoo.conf
