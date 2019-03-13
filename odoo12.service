@@ -1,0 +1,16 @@
+[Unit]
+Description=Odoo12
+Requires=postgresql.service
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+SyslogIdentifier=odoo12
+PermissionsStartOnly=true
+User=odoo12
+Group=odoo12
+ExecStart=/opt/odoo/odoo12/env/bin/python3 /opt/odoo/odoo12/odoo-bin -c /opt/odoo/odoo12/odoo.conf
+StandardOutput=journal+console
+
+[Install]
+WantedBy=multi-user.target
