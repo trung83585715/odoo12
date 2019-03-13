@@ -414,7 +414,7 @@
                             <div class="col-md-8 col-12">
                                 <div class="float-left">
                                     <a t-attf-href="/slides/#{slug(slide.channel_id)}" t-attf-title="Channel #{slide.channel_id.name}" t-attf-aria-label="Channel #{slide.channel_id.name}">
-                                        <i class="fa fa-circle-o fa-5x" style="color: #875A7B;font-weight: bold;"></i>
+                                        <i class="fa fa-circle-o fa-5x" style="color: #2839a8;font-weight: bold;"></i>
                                     </a>
                                 </div>
                                 <div style="margin-left: 80px">
