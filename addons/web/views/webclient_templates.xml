@@ -20,9 +20,6 @@
         <t t-call="web._assets_primary_variables"/>
         <t t-call="web._assets_secondary_variables"/>
 
-        <!-- Bootstrap variables should not be necessary, all pages come with bootstrap in at least one of their -->
-        <!-- bundle and, ideally, these should be available in all assets... with their odoo override. This system -->
-        <!-- however works for now as non-backend and non-frontend assets do not need overriden BS variables yet. -->
         <link t-if="not no_bs_vars" rel="stylesheet" type="text/scss" href="/web/static/lib/bootstrap/scss/_variables.scss"/>
     </template>
 
